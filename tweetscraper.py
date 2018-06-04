@@ -15,7 +15,7 @@ connection = pymysql.connect(host='localhost',
 
 def collectdata():
 
-    link = (input("Enter the MEMBERS PAGE of the FB group URL: "))
+    link = (input("Enter the URL with the list of tweets to be scraped: "))
     #link = 'https://twitter.com/search?f=tweets&vertical=default&q=from%3Areebok%20-filter%3Areplies%20-filter%3Anativeretweets&src=typd'
     numtoscrape = int(input("Enter the number of posts you want to scrape: "))
     #numtoscrape = 102
