@@ -14,12 +14,15 @@ connection = pymysql.connect(host='localhost',
 
 def collectdata():
 
-    link = (input("Enter the MEMBERS PAGE of the FB group URL: "))
+    link = (input("Enter the LIST OF TWEETS URL you want to scrape: "))
+    
     numtoscrape = int(input("Enter the number of posts you want to scrape: "))
+    
     databasename = (input("Enter databasename name: "))
-    create_database(databasename)
 
-    driver = webdriver.Chrome(executable_path="/Users/clickontemp/Downloads/chromedriver")
+    create_database(databasename)
+    chromdriver = "/Users/clickontemp/Downloads/chromedriver"
+    driver = webdriver.Chrome(executable_path=chromedriver)
     driver.get(link)
 
     postsscraped = 0
