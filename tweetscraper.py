@@ -5,7 +5,6 @@ import re
 import time
 import pymysql
 import pymysql.cursors
-import pyperclip
 
 connection = pymysql.connect(host='localhost',
                              user='root',
@@ -15,12 +14,9 @@ connection = pymysql.connect(host='localhost',
 
 def collectdata():
 
-    link = (input("Enter the URL with the list of tweets to be scraped: "))
-    #link = 'https://twitter.com/search?f=tweets&vertical=default&q=from%3Areebok%20-filter%3Areplies%20-filter%3Anativeretweets&src=typd'
+    link = (input("Enter the MEMBERS PAGE of the FB group URL: "))
     numtoscrape = int(input("Enter the number of posts you want to scrape: "))
-    #numtoscrape = 102
     databasename = (input("Enter databasename name: "))
-    #databasename = 'reebok9'
     create_database(databasename)
 
     driver = webdriver.Chrome(executable_path="/Users/clickontemp/Downloads/chromedriver")
@@ -63,7 +59,9 @@ def collectdata():
             if postsscraped == numtoscrape:
                 break
 
-        driver.execute_script("window.scrollTo(0, 11111080)")
+        for i in range(100):
+            driver.execute_script("window.scrollTo(0, 11111080)")
+            time.sleep(0.1)
         time.sleep(2)
     driver.close()
 
